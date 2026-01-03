@@ -13,8 +13,9 @@ const app = express();
 const PORT = process.env.PORT;
 
 const uploadsDir = path.join(__dirname, 'uploads');
+// Ensure uploads directory exists for static file serving
 if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir);
+  fs.mkdirSync(uploadsDir, { recursive: true });
 }
 
 app.use(cors());
